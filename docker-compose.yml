@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  eureka:
+    build:
+      context: ./eureka-server
+#      dockerfile: .
+    ports:
+     - "8761:8761"
+    networks:
+     - back-tier
+    container_name: eureka
+    hostname: eureka
+
+  spring:
+    build:
+      context: ./initial-service
+#      dockerfile: .
+    ports:
+     - "8082:8082"
+    networks:
+     - back-tier
+    container_name: spring
+    depends_on:
+     - "eureka"
+    links:
+    - eureka
+
+networks:
+  back-tier:

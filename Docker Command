@@ -1,0 +1,8 @@
+ docker rmi -f $(docker images --filter "dangling=true" -q)
+ docker build -t spring-boot:v1 .
+ docker run --rm -it spring-boot:v1 sh
+ docker run --rm -it --env appName="new zvalue" spring-boot:v1 sh
+ docker build --build-arg appName123="xxx"  -t spring-boot:v1 .
+
+
+

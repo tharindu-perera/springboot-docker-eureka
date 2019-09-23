@@ -1,0 +1,11 @@
+server:
+  port: 8082
+
+#TODO: figure out why I need this here and in bootstrap.yml
+spring:
+  application:
+    name: completeService
+
+eureka:
+  client:
+    register-with-eureka: true
